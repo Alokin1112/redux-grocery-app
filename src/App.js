@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import styled,{createGlobalStyle} from 'styled-components';
+import {useSelector} from 'react-redux';
 
+const Global=createGlobalStyle`
+  body{
+    background-color: #363536;
+    color:#fff;
+    display:flex;
+    justify-content: center;
+    align-content:center;
+  }
+`
 function App() {
+  const storeItems=useSelector(state=>state.storeItems)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Global/>
+      <ul>
+      {storeItems.list.map(item=><li>{item.name}</li>)}
+      </ul>
+    </>
   );
 }
 
