@@ -17,7 +17,7 @@ const shoppingCartReducer=(state=INITIAL_STATE,action)=>{
             })
         case types.DECREASE_IN_SHOPPING_CART:
             return produce(state,draftState=>{
-               draftState.list=state.list.map(item=>item.id==action.id&&item.amount>0?{id:item.id,amount:item.amount-1}:item)
+               draftState.list=state.list.map(item=>item.id==action.id&&item.amount>0?(item.amount==1?{}:{id:item.id,amount:item.amount-1}):item).filter(item=>item.id!=undefined)
             })
         case types.REMOVE_FROM_SHOPPING_CART:
             return produce(state,draftState=>{
