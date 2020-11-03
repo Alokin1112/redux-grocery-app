@@ -1,5 +1,16 @@
 import types from './types';
 import produce from 'immer';
+const UNITS={
+    kg:'kg',
+    litr:'litr',
+    bar:'bar',
+}
+const GROUP={
+    fruit:'fruit',
+    drink:'drink',
+    dairy:'dairy',
+    sweetness:'sweetness',
+}
 const INITIAL_STATE={
     listName:"Items in Shop",
     list:[
@@ -7,25 +18,29 @@ const INITIAL_STATE={
             id:0,
             name:"Apple",
             cost:1,
-            unit:'kg',
+            unit:UNITS.kg,
+            group:GROUP.fruit,
         },
         {
             id:1,
             name:'Milk',
             cost:1.5,
-            unit:"litr",
+            unit:UNITS.litr,
+            group:GROUP.dairy,
         },
         {
             id:2,
             name:'Water',
             cost:0.5,
-            unit:'litr',
+            unit:UNITS.litr,
+            group:GROUP.drink,
         },
         {
             id:3,
             name:'Chocolate',
             cost:5,
-            unit:'bar'
+            unit:UNITS.bar,
+            group:GROUP.sweetness,
         }
     ]
 }
