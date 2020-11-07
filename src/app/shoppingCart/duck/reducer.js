@@ -9,19 +9,19 @@ const shoppingCartReducer=(state=INITIAL_STATE,action)=>{
     switch(action.type){
         case types.INCREASE_IN_SHOPPING_CART:
             return produce(state,draftState=>{
-               state.list.map(item=>{if(item.id==action.id)isCreated=true;})
+               state.list.map(item=>{if(item.id===action.id)isCreated=true;})
                isCreated?
-               draftState.list=state.list.map(item=>item.id==action.id?{id:item.id,amount:item.amount+1}:item)
+               draftState.list=state.list.map(item=>item.id===action.id?{id:item.id,amount:item.amount+1}:item)
                :
                draftState.list.push({id:action.id,amount:1})
             })
         case types.DECREASE_IN_SHOPPING_CART:
             return produce(state,draftState=>{
-               draftState.list=state.list.map(item=>item.id==action.id&&item.amount>0?(item.amount==1?{}:{id:item.id,amount:item.amount-1}):item).filter(item=>item.id!=undefined)
+               draftState.list=state.list.map(item=>item.id===action.id&&item.amount>0?(item.amount===1?{}:{id:item.id,amount:item.amount-1}):item).filter(item=>item.id!==undefined)
             })
         case types.REMOVE_FROM_SHOPPING_CART:
             return produce(state,draftState=>{
-                draftState.list=state.list.map(item=>item.id==action.id?null:item)
+                draftState.list=state.list.filter(item=>item.id!==action.id)
             })
         case types.RESET_SHOPPING_CART:
             return produce(state,draftState=>{

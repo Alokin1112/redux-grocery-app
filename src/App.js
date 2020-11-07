@@ -1,8 +1,9 @@
 import React from 'react';
 import styled,{createGlobalStyle} from 'styled-components';
-import {useSelector} from 'react-redux';
 import {Header,Footer} from './components/stupidComponents';
-import {StoreItemRender} from './components'
+import {ShopPage,ShopCart,Nav} from './components';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+
 const Global=createGlobalStyle`
   *{
     box-sizing:border-box;
@@ -15,21 +16,22 @@ const Global=createGlobalStyle`
     align-content:center;
     flex-flow:column nowrap;
     overflow-x:hidden;
+    margin:0;
   }
 `
-const List=styled.ul`
-  list-style-type:none;
-`
+
 function App() {
-  const storeItems=useSelector(state=>state.storeItems)
   return (
     <>
     <Global/>
-      <Header/>
-      <List>
-        {storeItems.list.map(item=><li key={item.id}><StoreItemRender item={item}/></li>)}
-      </List>
-      <Footer/>
+      <Router>
+        <Header/>
+        <Switch>
+          <Route path="/" exact component={ShopPage}/>
+          <Route path='/cart' exact component={ShopCart}/>
+        </Switch>
+        <Footer/>
+      </Router>
     </>
   );
 }
