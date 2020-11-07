@@ -19,7 +19,6 @@ const NavList=styled.ul`
     font-size:1.5em;
     transition: all .1s ease-in-out;
     @media(max-width:768px){
-        
         transform:${({open})=>open?'translateX(0)':'translateX(100vw)'};
         transform-origin:1px;
         position:absolute;

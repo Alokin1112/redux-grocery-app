@@ -17,7 +17,7 @@ const INITIAL_STATE={
         {
             id:0,
             name:"Apple",
-            cost:1,
+            price:1,
             unit:UNITS.kg,
             group:GROUP.fruit,
             img:"https://img.freepik.com/free-vector/hand-drawn-apple-fruit-illustration_53876-2980.jpg?size=338&ext=jpg",
@@ -25,7 +25,7 @@ const INITIAL_STATE={
         {
             id:1,
             name:'Milk',
-            cost:1.5,
+            price:1.5,
             unit:UNITS.litr,
             group:GROUP.dairy,
             img:"https://img.icons8.com/plasticine/452/pack-of-milk.png",
@@ -33,7 +33,7 @@ const INITIAL_STATE={
         {
             id:2,
             name:'Water',
-            cost:0.5,
+            price:0.5,
             unit:UNITS.litr,
             group:GROUP.drink,
             img:"https://www.freepngimg.com/thumb/bottle/27683-6-water-bottle-icon.png",
@@ -41,7 +41,7 @@ const INITIAL_STATE={
         {
             id:3,
             name:'Chocolate',
-            cost:5,
+            price:5,
             unit:UNITS.bar,
             group:GROUP.sweetness,
             img:"https://img.pngio.com/chocolate-bar-icon-chocolate-bar-png-1600_1600.png",

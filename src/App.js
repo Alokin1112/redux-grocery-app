@@ -9,14 +9,15 @@ const Global=createGlobalStyle`
     box-sizing:border-box;
   }
   body{
-    background-color: #363536;
-    color:#fff;
+    background-color: #fff;
+    color:#222;
     display:flex;
     justify-content: center;
     align-content:center;
     flex-flow:column nowrap;
     overflow-x:hidden;
     margin:0;
+    max-width:100vw ;
   }
 `
 
