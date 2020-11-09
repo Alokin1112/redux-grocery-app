@@ -11,8 +11,15 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
 `;
+const InfoWrapper=styled.div`
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  flex-flow:row nowrap;
+`
 const Title = styled.h1`
   margin: 0;
   padding: 0.1em 0;
@@ -27,17 +34,31 @@ const Price = styled.h1`
   margin: auto 0.5em;
   padding: 0;
   font-size: 3em;
+  &::after{
+    content:'zł';
+  }
 `;
+const ProductImage=styled.img`
+  width:5vw;
+  height:5vw ;
+  min-height:64px;
+  min-width:64px;
+`
 function StoreItemRender({ item }) {
   return (
     <>
       <Wrapper>
-        <div>
+        <InfoWrapper>
+          <div>
           <Title>{item.name}</Title>
           <Group>{item.group}</Group>
+          </div>
+          <ProductImage alt={item.name+' photo'} src={item.img}/>
+        </InfoWrapper>
+        <InfoWrapper>
           <AddCart id={item.id} />
-        </div>
-        <Price>{item.price}</Price>
+          <Price>{item.price}</Price>
+        </InfoWrapper>
       </Wrapper>
     </>
   );

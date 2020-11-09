@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Nav} from '../'
+import {Link} from 'react-router-dom';
 const HeaderWrapper=styled.header`
     width:100vw;
     display: flex;
@@ -18,6 +19,10 @@ const HeaderWrapper=styled.header`
         justify-content: center;
     }
 `
+const LinkTitle=styled(Link)`
+    color:white;
+    text-decoration:none;
+`
 const Title=styled.h3`
     margin: 0;
     padding: 0;
@@ -31,7 +36,7 @@ function Header(){
     return(
         <>
         <HeaderWrapper>
-            <Title>Online Shop</Title>
+            <LinkTitle to="/"><Title>Online Shop</Title></LinkTitle>
             <Nav/>
         </HeaderWrapper>
         </>

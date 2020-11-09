@@ -17,7 +17,7 @@ const Global=createGlobalStyle`
     flex-flow:column nowrap;
     overflow-x:hidden;
     margin:0;
-    max-width:100vw ;
+    max-width:100vw !important;
   }
 `
 
