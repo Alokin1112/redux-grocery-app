@@ -2,8 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { StoreItemRender } from "./";
 import { useSelector } from "react-redux";
+import {Sort,IncreaseRender} from '../app/storeItems/components';
 
-const Wrapper = styled.div`
+const Wrapper=styled.div`
+  display: flex;
+  width: 100vw;
+  justify-content: flex-start;
+  align-items:center;
+  flex-flow:column nowrap;
+  min-height:100vh;
+`
+const ProductsWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,17 +39,26 @@ const ListItem = styled.li`
   }
 `;
 function ShopPage() {
-  const storeItems = useSelector((state) => state.storeItems);
+  const storeItems = useSelector((state) => 
+    state.storeItems.sort?
+      state.storeItems.list.filter(item=>item.group==state.storeItems.sort)
+      :state.storeItems.list
+    );
+  const slicer=useSelector((state)=>state.storeItems.renderSize);
   return (
     <>
       <Wrapper>
-        <List>
-          {storeItems.list.map((item) => (
-            <ListItem key={item.id}>
-              <StoreItemRender item={item} />
-            </ListItem>
-          ))}
-        </List>
+        <Sort/>
+        <ProductsWrapper>
+          <List>
+            {storeItems.slice(0,slicer).map((item) => (
+              <ListItem key={item.id}>
+                <StoreItemRender item={item} />
+              </ListItem>
+            ))}
+          </List>
+        </ProductsWrapper>
+        {storeItems.length>slicer?<IncreaseRender/>:null}
       </Wrapper>
     </>
   );

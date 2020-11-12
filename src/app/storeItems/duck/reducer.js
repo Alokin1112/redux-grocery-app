@@ -1,18 +1,16 @@
 import types from './types';
 import produce from 'immer';
+import GROUP from './group'
 const UNITS={
     kg:'kg',
     litr:'litr',
     bar:'bar',
 }
-const GROUP={
-    fruit:'fruit',
-    drink:'drink',
-    dairy:'dairy',
-    sweetness:'sweetness',
-}
+
 const INITIAL_STATE={
     listName:"Items in Shop",
+    sort:null,
+    renderSize:3,
     list:[
         {
             id:0,
@@ -45,6 +43,22 @@ const INITIAL_STATE={
             unit:UNITS.bar,
             group:GROUP.sweetness,
             img:"https://img.pngio.com/chocolate-bar-icon-chocolate-bar-png-1600_1600.png",
+        },
+        {
+            id:4,
+            name:'Cheese',
+            price:3,
+            unit:UNITS.kg,
+            group:GROUP.dairy,
+            img:'https://cdn.iconscout.com/icon/free/png-256/cheese-1806482-1534540.png',
+        },
+        {
+            id:5,
+            name:'Bar',
+            price:6,
+            unit:UNITS.bar,
+            group:GROUP.sweetness,
+            img:'https://icons-for-free.com/iconfiles/png/512/chocolate+bar-1319971786264794841.png',
         }
     ]
 }
@@ -62,6 +76,18 @@ const storeItemsReducer=(state=INITIAL_STATE,action)=>{
         case types.RESET_STORE_LIST:
             return produce(state,draftState=>{
                 draftState.list=[]
+            })
+        case types.CHANGE_SORT:
+            return produce(state,draftState=>{
+                draftState.sort=action.group;
+            })
+        case types.RESET_SORT:
+            return produce(state,draftState=>{
+                draftState.sort=null;
+            })
+        case types.INCREASE_RENDER:
+            return produce(state,draftState=>{
+                draftState.renderSize+=action.amount
             })
         default:
             return state;

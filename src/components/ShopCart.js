@@ -28,9 +28,10 @@ const List=styled.ul`
 const Wrapper=styled.div`
     width:100vw;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items:center;
     flex-flow:column nowrap;
+    min-height:100vh;
 `
 function ShopCart(){
     const Cart=useSelector(store=>store.shoppingCart.list)
